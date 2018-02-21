@@ -18,14 +18,6 @@ public:
 		count = 0;
 	}
 
-	String(const char x[])
-	{
-		count = strlen(x) + 1;
-		str = new char[count];
-		for (int i = 0; i < count; i++)
-			str[i] = x[i];
-	}
-
 	String(int len) :count((len > 0) ? len : 0)
 	{
 		str = nullptr;
@@ -40,6 +32,14 @@ public:
 	}
 
 	String(char* _str)
+	{
+		count = strlen(_str) + 1;
+		str = new char[count];
+		for (int i = 0; i < count; i++)
+			str[i] = _str[i];
+	}
+
+	String(const char _str[])
 	{
 		count = strlen(_str) + 1;
 		str = new char[count];
@@ -103,7 +103,7 @@ public:
 		r.read(str, count * sizeof(char));
 	}
 
-	int GetLen()
+	int GetCount()
 	{
 		return count;
 	}
